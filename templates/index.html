@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js ">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js">
+  </script>
+  <title>Email Validation</title>
+</head>
+
+<body>
+  <!-- {{ all_users }} -->
+  <div class="form-group container">
+
+    <!-- with all the data we can then construct a more structured output -->
+    {% if valid == True%}
+    <h5> The Email addresses you entered {{email}} is valid </h5> {% for emails in all_emails: %}
+
+
+    <ul>
+      <li>Email {{ emails['email'] }}, : {{ emails['created_at'] }}</li>
+
+    </ul>
+
+    {% endfor %} {% endif %} {% if valid == False %}
+    <h5> The email address {{email}}</h5> {% endif %}
+  </div>
+  <hr>
+
+  <div class="form-group container">
+
+    <form action='/success' method='POST'>
+      <label for="email">Email Address:<input type="text" name="email" id="email"></label>
+      <input type="submit" value="Submit">
+    </form>
+    <!--
+
+    <form action='/update_age' method='POST'>
+      <label for="user_id2">user_id:<input type="text" name="user_id2" id="user_id2"></label>
+      <label for="age2">Age:<input type="text" name="age2" id="age2"></label>
+      <input type="submit" value="Add">
+    </form>
+
+    <form action='/delete_users' method='POST'>
+      <label for="user_id">Delete id:<input type="text" name="user_id" id="user_id"></label>
+      <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp (NOT Reversible)</p>
+      <input type="submit" value="Add">
+    </form> -->
+  </div>
+</body>
+
+</html>
