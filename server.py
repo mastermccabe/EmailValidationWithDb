@@ -25,6 +25,7 @@ def index():
 
 @app.route('/success', methods=['POST'])
 def success():
+
     # if len(request.form['email']) < 1:
     #     flash("Email cannot be blank!")
     # elif not EMAIL_REGEX.match(request.form['email']):
@@ -42,6 +43,7 @@ def success():
     value = mysql.query_db(query, data)
     if len(value)==0:
         valid = False
+        flash('the email you entered was invalid')
         return redirect('/')
     else: valid = True
     value = mysql.query_db(query2, data)
